@@ -1,0 +1,18 @@
+# Base PHPStan config of every PrestaHaven module (package prestashopheaven/build-coding-standard).
+# A module's tests/phpstan/phpstan.neon includes it and adds only its own exceptions:
+#
+#   includes:
+#       - ../../vendor/prestashopheaven/build-coding-standard/phpstan.neon
+#
+# ps-module phpstan runs PHPStan from the module folder (%currentWorkingDirectory%), once per PrestaShop version of
+# tests/phpstan/config.json, and passes the paths to analyse (only folders that exist).
+includes:
+    - %currentWorkingDirectory%/vendor/prestashop/php-dev-tools/phpstan/ps-module-extension.neon
+
+parameters:
+    level: 6
+    phpVersion: 80100
+    excludePaths:
+        - */index.php
+    reportUnmatchedIgnoredErrors: false
+    tmpDir: %currentWorkingDirectory%/.cache/phpstan

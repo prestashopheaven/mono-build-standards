@@ -1,0 +1,53 @@
+{
+    "name": "prestashopheaven/build-coding-standard",
+    "description": "The shared PHP coding standard of the PrestaHaven modules and packages: the PHP-CS-Fixer config, the base PHPStan config, the PHPCS standard PrestaHavenCompatibility and the PHPUnit config template.",
+    "type": "phpcodesniffer-standard",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "George van Engers",
+            "email": "vanengers@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=8.1",
+        "friendsofphp/php-cs-fixer": "^3.95",
+        "phpstan/phpstan": "^2.1",
+        "prestashop/php-dev-tools": "^5.0",
+        "squizlabs/php_codesniffer": "^3.13.3 || ^4.0"
+    },
+    "suggest": {
+        "dealerdirect/phpcodesniffer-composer-installer": "Registers the PHPCS standards of every package of type phpcodesniffer-standard (PrestaHavenCompatibility, PHPCompatibility). Require \"^1.2\" in the module and allow the plugin.",
+        "phpcompatibility/php-compatibility": "The sniffs behind PrestaHavenCompatibility. Require \"^10.0@alpha\" in the module itself (alpha stability must be allowed by the root package)."
+    },
+    "autoload": {
+        "psr-4": {
+            "PrestaShopHeaven\\Build\\CodingStandard\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "PrestaShopHeaven\\Build\\CodingStandard\\Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-main": "1.x-dev"
+        },
+        "prestashopheaven": {
+            "kind": "build",
+            "use-when": "A module or package needs its .php-cs-fixer.dist.php, tests/phpstan/phpstan.neon, phpcs.xml.dist or phpunit.xml.dist: include the shared base and add only its own exceptions.",
+            "keywords": [
+                "coding standard",
+                "php-cs-fixer",
+                "phpstan",
+                "phpcs",
+                "php compatibility",
+                "phpunit",
+                "config",
+                "neon",
+                "ruleset"
+            ]
+        }
+    }
+}

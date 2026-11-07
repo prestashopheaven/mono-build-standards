@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!--
+  PHPCS standard PrestaHavenCompatibility (package prestashopheaven/build-coding-standard): the code runs on PHP 8.1
+  and newer. A module's phpcs.xml.dist names the files and references this standard:
+
+    <file>.</file>
+    <rule ref="PrestaHavenCompatibility"/>
+
+  The files stay in the module's ruleset: PHPCS would read a <file> of an included ruleset relative to this folder.
+  The exclude patterns, arguments and testVersion below apply to the module; its own ruleset can override them.
+-->
+<ruleset name="PrestaHavenCompatibility">
+    <description>PrestaHaven: the code runs on PHP 8.1 and newer (PHPCompatibility).</description>
+
+    <exclude-pattern>*/vendor/*</exclude-pattern>
+    <exclude-pattern>*/node_modules/*</exclude-pattern>
+    <exclude-pattern>*/.cache/*</exclude-pattern>
+
+    <arg name="extensions" value="php"/>
+    <arg name="colors"/>
+    <arg value="ps"/>
+
+    <config name="testVersion" value="8.1-"/>
+    <rule ref="PHPCompatibility"/>
+</ruleset>
