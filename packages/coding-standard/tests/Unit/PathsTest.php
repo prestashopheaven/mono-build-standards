@@ -192,15 +192,15 @@ final class PathsTest extends TestCase
         $root = [];
         $stack = [[-1, &$root]];
         foreach (preg_split('/\R/', $text) ?: [] as $line) {
-            if (trim($line) === '' || str_starts_with(ltrim($line), '#')) {
+            if (trim($line, " \n\r\t\v\0") === '' || str_starts_with(ltrim($line, " \n\r\t\v\0"), '#')) {
                 continue;
             }
-            $indent = strlen($line) - strlen(ltrim($line));
+            $indent = strlen($line) - strlen(ltrim($line, " \n\r\t\v\0"));
             while ($indent <= $stack[count($stack) - 1][0]) {
                 array_pop($stack);
             }
             $parent = &$stack[count($stack) - 1][1];
-            $item = trim($line);
+            $item = trim($line, " \n\r\t\v\0");
             if (str_starts_with($item, '- ')) {
                 $parent[] = substr($item, 2);
             } elseif (preg_match('/^([A-Za-z]+):\s*(.*)$/', $item, $m) === 1 && $m[2] !== '') {
