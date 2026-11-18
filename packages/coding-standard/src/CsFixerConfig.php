@@ -18,8 +18,6 @@ namespace PrestaShopHeaven\Build\CodingStandard;
 
 use PhpCsFixer\ConfigInterface;
 use PhpCsFixer\Finder;
-use PhpCsFixer\Runner\Parallel\ParallelConfig;
-use PhpCsFixer\Runner\Parallel\ParallelConfigFactory;
 use PrestaShop\CodingStandards\CsFixer\Config;
 
 /**
@@ -51,26 +49,8 @@ final class CsFixerConfig extends Config
         $finder = $config->setUsingCache(true)->getFinder();
         $finder->in($dir)->exclude(self::EXCLUDED_DIRS);
         $config->setCacheFile($dir . '/' . self::CACHE_FILE);
-        // CPU guard of the Module-Factory (F9): a limited number of worker processes, never every core.
-        $config->setParallelConfig(new ParallelConfig(self::workers()));
 
         return $config;
-    }
-
-    /**
-     * The worker processes for PHP-CS-Fixer: PS_MODULE_CPU_WORKERS when it is a positive number, otherwise a quarter of
-     * the cores (at least 1), like the CPU guard of build-tools.
-     *
-     * @param int|null $cores the number of cores (detected by PHP-CS-Fixer by default)
-     */
-    public static function workers(?int $cores = null): int
-    {
-        $setting = getenv('PS_MODULE_CPU_WORKERS');
-        if (is_string($setting) && preg_match('/^\d+$/', $setting) === 1 && (int) $setting > 0) {
-            return (int) $setting;
-        }
-
-        return max(1, intdiv($cores ?? ParallelConfigFactory::detect()->getMaxProcesses(), 4));
     }
 
     /**

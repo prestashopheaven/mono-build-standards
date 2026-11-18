@@ -2,6 +2,10 @@
 
 All packages of this monorepo share one version. Per package details: its own `CHANGELOG.md`.
 
+## 1.2.0
+
+- `build-coding-standard`: PHP-CS-Fixer uses its own number of workers again (the CPU guard is removed, 2026-11-18).
+
 ## 1.1.0
 
 - `build-coding-standard`: PHP-CS-Fixer runs with a limited number of worker processes (CPU guard of the

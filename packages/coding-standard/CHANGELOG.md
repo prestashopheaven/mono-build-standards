@@ -2,6 +2,11 @@
 
 The version is the one of the monorepo `mono-build-standards`.
 
+## 1.2.0
+
+- `CsFixerConfig::create()` no longer limits the workers (`PS_MODULE_CPU_WORKERS` is gone): PHP-CS-Fixer's own
+  parallel setting again.
+
 ## 1.1.0
 
 - `CsFixerConfig::create()` sets a limited `ParallelConfig`: `PS_MODULE_CPU_WORKERS`, or a quarter of the cores (at

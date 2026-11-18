@@ -129,29 +129,4 @@ final class CsFixerConfigTest extends TestCase
         self::assertSame(CsFixerConfig::create($this->dir)->getRules(), $config->getRules());
         self::assertSame("$this->dir/.cache/.php-cs-fixer.cache", $config->getCacheFile());
     }
-
-    /**
-     * The CPU guard of the Module-Factory: a quarter of the cores (at least 1), or PS_MODULE_CPU_WORKERS, and the
-     * config uses that number of worker processes.
-     */
-    public function testWorkersAreLimited(): void
-    {
-        $saved = getenv('PS_MODULE_CPU_WORKERS');
-        try {
-            putenv('PS_MODULE_CPU_WORKERS');
-            self::assertSame(8, CsFixerConfig::workers(32));
-            self::assertSame(1, CsFixerConfig::workers(3));
-            self::assertGreaterThanOrEqual(1, CsFixerConfig::workers());
-            self::assertSame(CsFixerConfig::workers(), CsFixerConfig::create($this->dir)->getParallelConfig()->getMaxProcesses());
-
-            putenv('PS_MODULE_CPU_WORKERS=3');
-            self::assertSame(3, CsFixerConfig::workers(32));
-            putenv('PS_MODULE_CPU_WORKERS=0');
-            self::assertSame(8, CsFixerConfig::workers(32), 'zero is not a setting');
-            putenv('PS_MODULE_CPU_WORKERS=many');
-            self::assertSame(8, CsFixerConfig::workers(32), 'text is not a setting');
-        } finally {
-            putenv($saved === false ? 'PS_MODULE_CPU_WORKERS' : "PS_MODULE_CPU_WORKERS=$saved");
-        }
-    }
 }

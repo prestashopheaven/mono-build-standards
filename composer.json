@@ -1,7 +1,7 @@
 {
     "name": "prestashopheaven/mono-build-standards",
     "description": "Shared coding standards and configs of the PrestaHaven modules: PHP-CS-Fixer, PHPStan, PHPCS compatibility, TypeScript, ESLint, Vitest and the JS build.",
-    "version": "1.1.0",
+    "version": "1.2.0",
     "type": "project",
     "license": "MIT",
     "repositories": [
@@ -11,8 +11,8 @@
             "options": {
                 "symlink": true,
                 "versions": {
-                    "prestashopheaven/build-coding-standard": "1.1.0",
-                    "prestashopheaven/build-typescript": "1.1.0"
+                    "prestashopheaven/build-coding-standard": "1.2.0",
+                    "prestashopheaven/build-typescript": "1.2.0"
                 }
             }
         }
