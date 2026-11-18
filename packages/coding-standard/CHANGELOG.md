@@ -2,6 +2,11 @@
 
 The version is the one of the monorepo `mono-build-standards`.
 
+## 1.1.0
+
+- `CsFixerConfig::create()` sets a limited `ParallelConfig`: `PS_MODULE_CPU_WORKERS`, or a quarter of the cores (at
+  least 1), instead of every core (CPU guard of the Module-Factory: the PC stays below 80 % CPU).
+
 ## 1.0.0
 
 First version. The sources of truth were the copies in the 17 modules (scan of 2026-11-07) and

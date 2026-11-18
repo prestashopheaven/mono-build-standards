@@ -2,6 +2,11 @@
 
 All packages of this monorepo share one version. Per package details: its own `CHANGELOG.md`.
 
+## 1.1.0
+
+- `build-coding-standard`: PHP-CS-Fixer runs with a limited number of worker processes (CPU guard of the
+  Module-Factory, 2026-11-18).
+
 ## 1.0.0
 
 - Monorepo created (2026-11-07), milestone M3 of the package collection (`docs/packages/STATUS.md`).
